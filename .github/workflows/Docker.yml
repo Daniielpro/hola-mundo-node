@@ -23,7 +23,7 @@ jobs:
  
           - name: Build Docker image  # Construye la imagen Docker con el tag del commit actual (github.sha)
             run: |
-              docker build --label "commit_sha=${{github.sha}}" -t daniielpro10/hola-mundo-node:${{github.sha}} .
+              docker build --label "commit_sha" -t daniielpro10/hola-mundo-node:${{github.sha}} .
  
           - name: Push Docker image  # Empuja la imagen construida a Docker Hub
             run: |
