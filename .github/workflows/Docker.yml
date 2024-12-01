@@ -21,11 +21,14 @@ jobs:
                 username: ${{ secrets.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
  
-          - name: Build Docker image  # Construye la imagen Docker con el tag del commit actual (github.sha)
+          - name: Build Docker image  # Construye la imagen con el mensaje del commit como tag
             run: |
-              docker build -t daniielpro10/hola-mundo-node:${{ github.sha }} .
+              commit_message="${{ github.event.head_commit.message }}"
+              # Reemplaza espacios con guiones y recorta el mensaje si es muy largo
+              tag=$(echo "$commit_message" | tr '[:space:]' '-' | cut -c 1-50)
+              docker build -t daniielpro10/hola-mundo-node:$tag .
  
-          - name: Push Docker image  # Empuja la imagen construida a Docker Hub
+          - name: Push Docker image  # Empuja la imagen construida al Docker Hub
             run: |
-              docker push daniielpro10/hola-mundo-node:${{ github.sha }}
+              docker push daniielpro10/hola-mundo-node:$tag
               
