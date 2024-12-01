@@ -26,9 +26,9 @@ jobs:
               commit_message="${{ github.event.head_commit.message }}"
               # Reemplaza espacios con guiones y recorta el mensaje si es muy largo
               tag=$(echo "$commit_message" | tr '[:space:]' '-' | cut -c 1-50)
+              echo "Building Docker image with tag: $tag"
               docker build -t daniielpro10/hola-mundo-node:$tag .
  
           - name: Push Docker image  # Empuja la imagen construida al Docker Hub
             run: |
               docker push daniielpro10/hola-mundo-node:$tag
-              
