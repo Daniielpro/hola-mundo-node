@@ -23,7 +23,7 @@ jobs:
  
           - name: Build Docker image
             run: |
-              docker build -t ${{secrets.DOCKER_USERNAME}}/node-app:${{github.latest}} .
+              docker build -t ${{secrets.DOCKER_USERNAME}}/hola-mundo-node:${{github.latest}} .
           - name: Push Docker image
             run: |
-              docker push ${{secrets.DOCKER_USERNAME}}/node-app:${{github.lastest}}
+              docker push ${{secrets.DOCKER_USERNAME}}/hola-mundo-node:${{github.lastest}}
