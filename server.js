@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Ruta principal
 app.get('/api/saludo', (req, res) => {
-    res.json({ mensaje: 'Hola Mundo desde el Backend' });
+    res.json({ mensaje: 'Hola Mundo Saludos desde el Backend' });
 });
 
 app.listen(PORT, () => {
